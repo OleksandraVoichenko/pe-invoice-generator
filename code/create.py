@@ -23,6 +23,7 @@ class PdfCreator:
         c.drawString(self.width - 220, self.height - 100, 'INVOICE')
         c.setFont('Bold', 16)
         c.drawString(self.width - 220, self.height - 125, str('# INV-' + date.today().isoformat()))
+        c.drawString(self.width - 220, self.height - 150, str('Issue date: ' + date.today().isoformat()))
 
         # personal
         c.setFont('Normal', 16)
@@ -41,5 +42,10 @@ class PdfCreator:
 
 
     def fill(self, c):
-        pass
+        y_pos = 500
+        # project
+        c.setFont('Normal', 16)
+        c.drawString(50, y_pos, 'Service description:')
+        y_pos -=20
+        c.drawString(50, y_pos, self.project_info['description'])
 

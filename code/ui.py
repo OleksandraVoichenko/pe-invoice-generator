@@ -28,6 +28,7 @@ project_info = {'work_interval': '[work_interval]',
 c = canvas.Canvas("invoice.pdf")
 pdf_creator = PdfCreator(personal_info, client_info, project_info)
 pdf_creator.create_base(c)
+pdf_creator.fill(c)
 c.showPage()
 c.save()
 
