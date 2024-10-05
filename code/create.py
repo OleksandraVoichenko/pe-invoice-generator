@@ -1,6 +1,7 @@
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.pagesizes import A4
+from datetime import date
 from settings import *
 
 class PdfCreator:
@@ -17,8 +18,11 @@ class PdfCreator:
 
 
     def create_base(self, c):
+        # invoice cap
         c.setFont('Captions', 40)
         c.drawString(self.width - 220, self.height - 100, 'INVOICE')
+        c.setFont('Bold', 16)
+        c.drawString(self.width - 220, self.height - 125, str('# INV-' + date.today().isoformat()))
 
         # personal
         c.setFont('Normal', 16)
