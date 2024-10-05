@@ -1,0 +1,36 @@
+# Required technologies
+
+1. Python
+2. ReportLab - library to work with PDFs (allows to create tables)
+3. Flask (to create basic UI)
+
+
+# Information to include on the Invoice
+
+1. About me:
+    [company name]
+    [street address]
+    [city, zip]
+    [phone number]
+    [website/contact media/email]
+
+2. Bill to:
+    [name of contractor]
+    [company name]
+    [street address]
+    [city, zip]
+    [phone number]
+
+3. Easily noticeable captions "INVOICE"
+
+4. # of invoice issued
+
+5. Invoice issue date
+
+6. Full service description with corresponding KVEDs
+
+7. Amount of the payment
+
+8. Total $
+
+9. Service conduction date interval
