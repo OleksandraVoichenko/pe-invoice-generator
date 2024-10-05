@@ -29,3 +29,36 @@ system that saves entrepreneurs time, reduces human error, and ensures complianc
 tax regulations. By solving this problem, the project not only boosts productivity but also
 addresses a widespread pain point for private entrepreneurs, making it a critical tool for
 those looking to focus on their business growth while remaining compliant with governmental standards.
+
+
+# Key Functionalities (Will be updated...)
+
+~ Automated PDF Invoice Generation:
+    Quickly create professional invoices with the following fields:
+        - Date of service
+        - Date of payment
+        - Service description (based on KVED for legal compliance)
+        - Payment amount
+        - Client name
+
+~ Data Storage for Quick Access:
+    Save client information and commonly provided services to reuse for future invoices,
+    speeding up the invoicing process for repeat transactions.
+
+~ User-Friendly Interface:
+    Simple, intuitive interface for entrepreneurs to input data and generate invoices
+    without technical knowledge.
+
+
+# Benefits
+
+~ Save Time:
+    Generate invoices in seconds, saving hours of manual work each month.
+
+~ Ensure Compliance:
+    Automatically structure invoices to comply with legal and tax requirements,
+    ensuring proper documentation for government audits.
+
+~ Grow Your Business:
+    Focus on increasing your business productivity while handling invoicing tasks more efficiently.
+
