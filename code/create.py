@@ -1,5 +1,7 @@
 from reportlab.pdfbase import pdfmetrics
+from reportlab.lib import colors
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import Table, TableStyle
 from reportlab.lib.pagesizes import A4
 from datetime import date
 from settings import *
@@ -47,5 +49,35 @@ class PdfCreator:
         c.setFont('Normal', 16)
         c.drawString(50, y_pos, 'Service description:')
         y_pos -=20
-        c.drawString(50, y_pos, self.project_info['description'])
+        description = self.project_info['description']
+        c.drawString(50, y_pos, description)
 
+        lines = description.split('\n')
+        description_height = len(lines) * 16
+
+        table_data = [
+            ['Description', 'Total'],
+            [self.project_info['description'], self.project_info['payment']]
+        ]
+
+        table = Table(table_data, colWidths=[400, 100])
+
+        style = TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, -1), 12),
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ])
+
+        table.setStyle(style)
+
+        # Adjust the table's Y-position based on the description height
+        y_pos -= description_height + 20
+
+        # Wrap the table in a list and draw it on the canvas at the calculated position
+        table.wrapOn(c, self.width, self.height)
+        table.drawOn(c, 50, y_pos)
