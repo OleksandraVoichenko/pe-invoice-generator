@@ -22,7 +22,8 @@ client_info = {'client company': '[client company]',
                 'city, zip': '[city, zip]'}
 
 project_info = {'work_interval': '[work_interval]',
-                'description': '[description]',
+                'scope': '[scope]',
+                'description': '[description/memo]',
                 'payment': '[payment]'}
 
 c = canvas.Canvas("invoice.pdf")
