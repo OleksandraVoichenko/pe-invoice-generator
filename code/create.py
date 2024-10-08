@@ -10,7 +10,7 @@ class PdfCreator:
     def __init__(self, personal_info, client_info, project_info):
         self.personal_info = personal_info
         self.client_info = client_info
-        self.project_info = project_info
+        self.proj_info = project_info
 
         self.width, self.height = A4
 
@@ -49,7 +49,7 @@ class PdfCreator:
         c.setFont('Normal', 16)
         c.drawString(50, y_pos, 'Service description:')
         y_pos -=20
-        description = self.project_info['description']
+        description = self.proj_info['scope']
         c.drawString(50, y_pos, description)
 
         lines = description.split('\n')
@@ -57,11 +57,10 @@ class PdfCreator:
 
         table_data = [
             ['DESCRIPTION/MEMO', '', 'AMOUNT'],
-            [
-                f"Invoice for work between {self.project_info['work_interval'][0]} to {self.project_info['work_interval'][1]}"],
-            [self.project_info['description'], '', self.project_info['payment']],
-            ['', 'VAT(0%)', 'USD OF VAT'],
-            ['', 'TOTAL', self.project_info['payment']]
+            [f"Invoice for work between"],
+            [self.proj_info['description'], '', self.proj_info['payment']],
+            ['', 'VAT (0%)', 'USD 0$'],
+            ['', 'TOTAL', self.proj_info['payment']]
         ]
 
         col_widths = [300, 100, 100]
