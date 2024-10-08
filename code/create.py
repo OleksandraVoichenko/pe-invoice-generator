@@ -69,17 +69,32 @@ class PdfCreator:
         table = Table(table_data, colWidths=col_widths)
 
         style = TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, -1), 12),
-            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black),
-            ('SPAN', (0, 0), (1, 0)),
-            ('SPAN', (0, 1), (2, 1)),
-            ('SPAN', (0, 2), (1, 2)),
+            # Header styling
+            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),  # Header background
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),  # Header text color
+            ('ALIGN', (0, 0), (-1, 0), 'LEFT'),  # Header align left
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Header font bold
+            ('FONTSIZE', (0, 0), (-1, 0), 16),  # Header font size
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 10),  # Padding for header
+
+            # Body styling
+            ('FONTNAME', (0, 1), (-1, -1), 'Normal'),  # Body font normal
+            ('FONTSIZE', (0, 1), (-1, -1), 16),  # Body font size
+            ('ALIGN', (0, 1), (-1, -1), 'LEFT'),  # Body align left
+            ('VALIGN', (0, 1), (-1, -1), 'MIDDLE'),  # Vertically align body rows to middle
+            ('BOTTOMPADDING', (0, 1), (-1, -1), 12),  # Adjust padding for body rows
+            ('TOPPADDING', (0, 1), (-1, -1), 12),
+
+            # Background and grid
+            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),  # Body background
+            ('GRID', (0, 0), (-1, -1), 1, colors.black),  # Table grid
+
+            # Cell spanning
+            ('SPAN', (0, 0), (1, 0)),  # Span first two header cells
+            ('SPAN', (0, 1), (2, 1)),  # Span description row
+            ('SPAN', (0, 2), (1, 2)),  # Span second description row
+
+            # Aligning amount and total
             ('ALIGN', (2, 3), (2, 4), 'RIGHT'),
             ('ALIGN', (0, 3), (1, 3), 'RIGHT'),
             ('ALIGN', (0, 4), (1, 4), 'RIGHT'),
@@ -89,7 +104,7 @@ class PdfCreator:
         table.setStyle(style)
 
         # Adjust the table's Y-position based on the description height
-        y_pos -= description_height + 50
+        y_pos -= description_height + 200
 
         # Wrap the table in a list and draw it on the canvas at the calculated position
         table.wrapOn(c, self.width, self.height)
