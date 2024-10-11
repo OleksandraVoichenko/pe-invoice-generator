@@ -38,7 +38,7 @@ class PdfCreator:
         c.setFont('Normal', 16)
         c.drawString(50, self.height - 220, 'Bill to:')
         y_pos = self.height - 240
-        for label, value in self.personal_info.items():
+        for label, value in self.client_info.items():
             c.drawString(50, y_pos, value)
             y_pos -= 22
 
@@ -85,7 +85,7 @@ class PdfCreator:
             ('TOPPADDING', (0, 1), (-1, -1), 12),
 
             # Background and grid
-            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),  # Body background
+            ('BACKGROUND', (0, 1), (-1, -1), colors.white),  # Body background
             ('GRID', (0, 0), (-1, -1), 1, colors.black),  # Table grid
 
             # Cell spanning

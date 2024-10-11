@@ -22,19 +22,23 @@ project_info = {'work_interval': '[work_interval]',
 
 class UI:
     @staticmethod
-    def create_pdf(self):
+    def create_pdf():
         c = canvas.Canvas("invoice.pdf")
         pdf_creator = PdfCreator(personal_info, client_info, project_info)
         pdf_creator.create_base(c)
         pdf_creator.fill(c)
         c.showPage()
         c.save()
+        return "invoice.pdf"
 
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-
+        personal_info['company name'] = request.form.get('company_name')
+        pdf_file = UI.create_pdf()
+        return send_file(pdf_file, as_attachment=True)
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
