@@ -1,6 +1,6 @@
-from flask import Flask
-from create import PdfCreator
+from flask import Flask, render_template, request, send_file
 from reportlab.pdfgen import canvas
+from create import PdfCreator
 
 app = Flask(__name__)
 
@@ -31,9 +31,10 @@ class UI:
         c.save()
 
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello world!</p>"
+@app.route("/", methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+
 
 
 if __name__ == "__main__":
